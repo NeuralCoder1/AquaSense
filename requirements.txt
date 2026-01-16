@@ -1,0 +1,7 @@
+Flask>=2.0
+joblib
+scikit-learn
+numpy
+pandas
+python-dotenv
+
