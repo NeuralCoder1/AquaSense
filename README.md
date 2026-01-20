@@ -1,4 +1,4 @@
-# 🌊 AquaSense — Groundwater Anomaly Detection System
+# 🌊 AquaSense — Groundwater Detection System
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
 ![Flask](https://img.shields.io/badge/Flask-Web%20Framework-black)
@@ -37,6 +37,7 @@ Unregulated extraction, seasonal imbalance, and delayed monitoring result in **s
 
   * `SAFE` — statistically normal groundwater behavior
   * `CRITICAL` — anomaly detected or threshold violation
+* **Station Warning:** initially I used E-mail warning system by SMTP  but it will also capabel to work on phone Text Messaging system on large Scale implimentation
 
 This hybrid logic combines **statistical anomaly detection** with **domain-driven thresholds** for higher reliability.
 
@@ -82,7 +83,7 @@ Flask Backend
         ├── SQLite (Prediction History)
         |
         v
-JSON Response (SAFE / CRITICAL)
+JSON Response (SAFE / CRITICAL) and SMTP Warnign to the stations
 ```
 
 ---
@@ -93,7 +94,8 @@ JSON Response (SAFE / CRITICAL)
 * **Machine Learning:** scikit-learn, NumPy
 * **Model Serialization:** Joblib
 * **Database:** SQLite (auto-generated)
-* **Deployment:** Render / Hugging Face Spaces
+* **Deployment:** Render
+* **Warning/Notification:** SMTP 
 * **Configuration:** python-dotenv
 
 ---
@@ -166,27 +168,18 @@ http://localhost:7860
 
 ## 📸 Screenshots
 
-```md
+### Home Page
 ![Home Page](S1.png)
+
+### Prediction Result
 ![Prediction Result](S2.png)
-```
 
 ---
-## Live Visualization Link :-  
+## Render Live Visualization Link :-  
 https://aquasense-hzc0.onrender.com/
 
 ## 📜 License
 
 Licensed under the **Apache License 2.0**
 Refer to the `LICENSE` file for full terms.
-
----
-
-## 👤 Author
-
-**NeuralCoder0**
----B.Tech (CSE) — Machine Learning & Data Systems
-
-Focused on **ML-driven sustainability**, **data engineering**, and **real-world impact systems**.
-
 
