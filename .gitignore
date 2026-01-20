@@ -1,0 +1,22 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.venv/
+
+# ML models
+*.pkl
+
+# Databases
+*.db
+
+# OS files
+.DS_Store
+
+# Logs
+*.log
