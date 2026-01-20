@@ -1,9 +1,9 @@
 import json
 import joblib
 import sqlite3
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+# import smtplib                         # EMAIL DISABLED
+# from email.mime.text import MIMEText  # EMAIL DISABLED
+# from email.mime.multipart import MIMEMultipart  # EMAIL DISABLED
 from datetime import datetime, timedelta, timezone
 from flask import Flask, request, jsonify, render_template, g
 from pathlib import Path
@@ -17,11 +17,11 @@ ENV_PATH = BASE_DIR / ".env"
 
 config = dotenv_values(ENV_PATH)
 
-EMAIL_SENDER = config.get("EMAIL_SENDER")
-EMAIL_PASSWORD = config.get("EMAIL_PASSWORD")
-ALERT_EMAIL = config.get("ALERT_EMAIL")
+# EMAIL_SENDER = config.get("EMAIL_SENDER")      # EMAIL DISABLED
+# EMAIL_PASSWORD = config.get("EMAIL_PASSWORD")  # EMAIL DISABLED
+# ALERT_EMAIL = config.get("ALERT_EMAIL")        # EMAIL DISABLED
 
-print("EMAIL CONFIG CHECK →", EMAIL_SENDER, ALERT_EMAIL)
+# print("EMAIL CONFIG CHECK →", EMAIL_SENDER, ALERT_EMAIL)  # EMAIL DISABLED
 
 MODEL_PATH = "final_isolation_forest_model.pkl"
 SCALER_PATH = "scaler.pkl"
@@ -32,27 +32,27 @@ app = Flask(__name__, template_folder="templates")
 model = joblib.load(MODEL_PATH)
 scaler = joblib.load(SCALER_PATH)
 
-def send_email_alert(subject, message):
-    if not EMAIL_SENDER or not EMAIL_PASSWORD or not ALERT_EMAIL:
-        print("Email config missing")
-        return
-
-    try:
-        msg = MIMEMultipart()
-        msg["From"] = EMAIL_SENDER
-        msg["To"] = ALERT_EMAIL
-        msg["Subject"] = subject
-        msg.attach(MIMEText(message, "plain"))
-
-        server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
-        server.login(EMAIL_SENDER, EMAIL_PASSWORD)
-        server.sendmail(EMAIL_SENDER, ALERT_EMAIL, msg.as_string())
-        server.quit()
-
-        print(f"Email sent ({subject})")
-
-    except Exception as e:
-        print("Email sending failed:", e)
+# def send_email_alert(subject, message):   # EMAIL DISABLED
+#     if not EMAIL_SENDER or not EMAIL_PASSWORD or not ALERT_EMAIL:
+#         print("Email config missing")
+#         return
+#
+#     try:
+#         msg = MIMEMultipart()
+#         msg["From"] = EMAIL_SENDER
+#         msg["To"] = ALERT_EMAIL
+#         msg["Subject"] = subject
+#         msg.attach(MIMEText(message, "plain"))
+#
+#         server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
+#         server.login(EMAIL_SENDER, EMAIL_PASSWORD)
+#         server.sendmail(EMAIL_SENDER, ALERT_EMAIL, msg.as_string())
+#         server.quit()
+#
+#         print(f"Email sent ({subject})")
+#
+#     except Exception as e:
+#         print("Email sending failed:", e)
 
 def get_db():
     if "_db" not in g:
@@ -141,7 +141,7 @@ Timestamp:
 {datetime.now(IST).isoformat()}
 """.strip()
 
-    send_email_alert(subject, message)
+    # send_email_alert(subject, message)   # EMAIL DISABLED
 
     db = get_db()
     db.execute("""
@@ -192,4 +192,4 @@ def history():
 if __name__ == "__main__":
     with app.app_context():
         init_db()
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=7860)
