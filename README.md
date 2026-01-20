@@ -172,7 +172,8 @@ http://localhost:7860
 ```
 
 ---
-## Live Visualization Link :-  https://aquasense-hzc0.onrender.com/
+## Live Visualization Link :-  
+https://aquasense-hzc0.onrender.com/
 
 ## 📜 License
 
@@ -184,7 +185,7 @@ Refer to the `LICENSE` file for full terms.
 ## 👤 Author
 
 **NeuralCoder0**
-B.Tech (CSE) — Machine Learning & Data Systems
+---B.Tech (CSE) — Machine Learning & Data Systems
 
 Focused on **ML-driven sustainability**, **data engineering**, and **real-world impact systems**.
 
